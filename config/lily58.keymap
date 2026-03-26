@@ -1,0 +1,99 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        CapsLock {
+            bindings = <&kp CAPS>;
+            key-positions = <53 24>;
+        };
+    };
+
+    macros {
+        UnPHess: UnPHess {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp T &kp H &kp E &kp G &kp E &kp R &kp H &kp O &kp R &kp S &kp T &kp TAB &kp N2 &kp LS(N) &kp E &kp P &kp H &kp I &kp N2 &kp N5 &kp COLON &kp N2 &kp N6 &kp RET>;
+            label = "UNPHESS";
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            // ------------------------------------------------------------------------------------------------------------
+            // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
+            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
+            // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
+            // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
+            //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
+
+            display-name = "Base";
+            bindings = <
+&kp ESC    &kp N1  &kp N2  &kp N3     &kp N4        &kp N5                                  &kp N6         &kp N7   &kp N8            &kp N9   &kp N0    &kp LEFT_GUI
+&kp TAB    &kp Q   &kp W   &kp E      &kp R         &kp T                                   &kp Y          &kp U    &kp I             &kp O    &kp P     &kp MINUS
+&kp LC(V)  &kp A   &kp S   &kp D      &kp F         &kp G                                   &kp H          &kp J    &kp K             &kp L    &kp SEMI  &kp SQT
+&kp LC(C)  &kp Z   &kp X   &kp C      &kp V         &kp B      &mo 2             &mo 1      &kp N          &kp M    &kp COMMA         &kp DOT  &kp FSLH  &kp LC(DOWN_ARROW)
+                           &kp LCTRL  &kp LEFT_ALT  &kp ENTER  &kp LEFT_SHIFT    &kp SPACE  &kp BACKSPACE  &kp DEL  &kp LC(UP_ARROW)
+            >;
+        };
+
+        lower_layer {
+            // ------------------------------------------------------------------------------------------------------------
+            // | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |      |       |       |      |       |       |
+            // |  F1   |  F2 |  F3 |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
+            // |   `   |  !  |  @  |  #   |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   ~   |
+            // |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
+            //                     |      |      |      |        |  |       |      |       |       |
+
+            display-name = "Lower";
+            bindings = <
+&bt BT_CLR        &bt BT_SEL 0  &bt BT_SEL 1          &bt BT_SEL 2     &bt BT_SEL 3      &bt BT_SEL 4                    &trans         &trans    &trans           &trans    &trans    &trans
+&kp F1            &kp F2        &kp F3                &kp F4           &kp F5            &kp F6                          &kp F7         &kp F8    &kp F9           &kp F10   &kp F11   &kp F12
+&kp GRAVE         &kp EXCL      &kp AT                &kp HASH         &kp DOLLAR        &kp PRCNT                       &kp CARET      &kp AMPS  &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
+&kp LC(UP_ARROW)  &kp PIPE      &kp LEFT_PARENTHESIS  &kp LEFT_BRACE   &kp LEFT_BRACKET  &kp SLASH     &trans    &trans  &kp BACKSLASH  &kp RBKT  &kp RBRC         &kp RPAR  &kp RBRC  &kp LC(LS(UP_ARROW))
+                                                      &kp PRINTSCREEN  &kp K_CALC        &trans        &trans    &trans  &trans         &trans    &trans
+            >;
+        };
+
+        raise_layer {
+            // ------------------------------------------------------------------------------------------------------------
+            // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
+            // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
+            // |   F1  |  F2 |  F3 |  F4  |  F5  |  F6  |                   |      |   <-  |   v   |  ^   |  ->   |       |
+            // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
+            //                     |      |      |      |        |  |       |      |       |       |
+
+            display-name = "Raise";
+            bindings = <
+&trans     &trans  &trans  &trans     &trans        &trans                            &kp KP_DIVIDE    &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9    &kp HOME          &kp END
+&kp GRAVE  &kp N1  &kp N2  &kp N3     &kp N4        &kp N5                            &kp KP_MULTIPLY  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6    &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&kp F1     &kp F2  &kp F3  &kp F4     &kp F5        &kp F6                            &kp MINUS        &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3    &kp UP_ARROW      &trans
+&kp LC(C)  &kp F8  &kp F9  &kp F10    &kp F11       &UnPHess   &tog 2      &kp EQUAL  &kp PLUS         &kp NUMBER_0  &kp PERIOD    &kp LEFT_ARROW  &kp DOWN_ARROW    &kp RIGHT_ARROW
+                           &kp LC(V)  &kp LEFT_GUI  &kp ENTER  &kp CAPS    &kp SPACE  &kp BACKSPACE    &kp DELETE    &kp LC(DOWN)
+            >;
+        };
+
+        extra_1 {
+            status = "reserved";
+        };
+
+        extra_2 {
+            status = "reserved";
+        };
+
+        extra_3 {
+            status = "reserved";
+        };
+    };
+};
