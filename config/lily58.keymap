@@ -19,11 +19,11 @@
     };
 
     macros {
-        UnPHess: UnPHess {
+        PRTSCN_BTN: PRTSCN_BTN {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp T &kp H &kp E &kp G &kp E &kp R &kp H &kp O &kp R &kp S &kp T &kp TAB &kp N2 &kp LS(N) &kp E &kp P &kp H &kp I &kp N2 &kp N5 &kp COLON &kp N2 &kp N6 &kp RET>;
-            label = "UNPHESS";
+            bindings = <&kp PRINTSCREEN &to 0>;
+            label = "PRTSCN_BTN";
         };
     };
 
@@ -58,11 +58,11 @@
 
             display-name = "Lower";
             bindings = <
-&bt BT_CLR        &bt BT_SEL 0  &bt BT_SEL 1          &bt BT_SEL 2     &bt BT_SEL 3      &bt BT_SEL 4                    &trans         &trans    &trans           &trans    &trans    &trans
-&kp F1            &kp F2        &kp F3                &kp F4           &kp F5            &kp F6                          &kp F7         &kp F8    &kp F9           &kp F10   &kp F11   &kp F12
-&kp GRAVE         &kp EXCL      &kp AT                &kp HASH         &kp DOLLAR        &kp PRCNT                       &kp CARET      &kp AMPS  &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
-&kp LC(UP_ARROW)  &kp PIPE      &kp LEFT_PARENTHESIS  &kp LEFT_BRACE   &kp LEFT_BRACKET  &kp SLASH     &trans    &trans  &kp BACKSLASH  &kp RBKT  &kp RBRC         &kp RPAR  &kp RBRC  &kp LC(LS(UP_ARROW))
-                                                      &kp PRINTSCREEN  &kp K_CALC        &trans        &trans    &trans  &trans         &trans    &trans
+&bt BT_CLR        &bt BT_SEL 0  &bt BT_SEL 1          &bt BT_SEL 2    &bt BT_SEL 3      &bt BT_SEL 4                    &trans         &trans    &trans           &trans    &trans    &trans
+&kp F1            &kp F2        &kp F3                &kp F4          &kp F5            &kp F6                          &kp F7         &kp F8    &kp F9           &kp F10   &kp F11   &kp F12
+&kp GRAVE         &kp EXCL      &kp AT                &kp HASH        &kp DOLLAR        &kp PRCNT                       &kp CARET      &kp AMPS  &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp TILDE
+&kp LC(UP_ARROW)  &kp PIPE      &kp LEFT_PARENTHESIS  &kp LEFT_BRACE  &kp LEFT_BRACKET  &kp SLASH     &trans    &trans  &kp BACKSLASH  &kp RBKT  &kp RBRC         &kp RPAR  &kp RBRC  &kp LC(LS(UP_ARROW))
+                                                      &PRTSCN_BTN     &kp K_CALC        &trans        &trans    &trans  &trans         &trans    &trans
             >;
         };
 
@@ -82,18 +82,6 @@
 &kp LC(C)  &kp F8  &kp F9  &kp F10    &kp F11       &UnPHess   &tog 2      &kp EQUAL  &kp PLUS         &kp NUMBER_0  &kp PERIOD    &kp LEFT_ARROW  &kp DOWN_ARROW    &kp RIGHT_ARROW
                            &kp LC(V)  &kp LEFT_GUI  &kp ENTER  &kp CAPS    &kp SPACE  &kp BACKSPACE    &kp DELETE    &kp LC(DOWN)
             >;
-        };
-
-        extra_1 {
-            status = "reserved";
-        };
-
-        extra_2 {
-            status = "reserved";
-        };
-
-        extra_3 {
-            status = "reserved";
         };
     };
 };
